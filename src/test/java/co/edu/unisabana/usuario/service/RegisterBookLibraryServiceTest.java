@@ -7,12 +7,15 @@ import co.edu.unisabana.usuario.service.library.port.AddBookPort;
 import co.edu.unisabana.usuario.service.library.port.RegisterBookPort;
 import co.edu.unisabana.usuario.service.library.port.SearchBookPort;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.Mockito;
+import org.mockito.junit.jupiter.MockitoExtension;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+@ExtendWith(MockitoExtension.class)
 public class RegisterBookLibraryServiceTest {
     @InjectMocks
     private RegisterBookLibrary registerBookLibraryService;
@@ -47,4 +50,6 @@ public class RegisterBookLibraryServiceTest {
         Mockito.verify(registerBookPort).registerBook(book);
         assertEquals(2, result);
     }
+
+
 }

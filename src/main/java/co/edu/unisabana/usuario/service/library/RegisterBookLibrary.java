@@ -1,10 +1,15 @@
 package co.edu.unisabana.usuario.service.library;
 
+import co.edu.unisabana.usuario.repository.dao.entity.BookEntity;
 import co.edu.unisabana.usuario.service.library.model.Book;
+import co.edu.unisabana.usuario.service.library.model.CategoryBook;
 import co.edu.unisabana.usuario.service.library.port.AddBookPort;
 import co.edu.unisabana.usuario.service.library.port.RegisterBookPort;
 import co.edu.unisabana.usuario.service.library.port.SearchBookPort;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class RegisterBookLibrary {
@@ -30,6 +35,15 @@ public class RegisterBookLibrary {
             return 2;
         }
     }
-
+    public List<Book> getBooksByAuthor(String authorName){
+        return searchBookPort.getBooksByAuthor(authorName).stream()
+                .map(bookEntity -> new Book(bookEntity.getName(), bookEntity.getYear(), bookEntity.getAuthor(), bookEntity.isRRated(), CategoryBook.fromString(bookEntity.getCategory())))
+                .collect(Collectors.toList());
+    }
+    public List<Book> getBooksByCategory(String category){
+        return searchBookPort.getBooksByCategory(category).stream()
+                .map(bookEntity -> new Book(bookEntity.getName(), bookEntity.getYear(), bookEntity.getAuthor(), bookEntity.isRRated(), CategoryBook.fromString(bookEntity.getCategory())))
+                .collect(Collectors.toList());
+    }
 
 }
