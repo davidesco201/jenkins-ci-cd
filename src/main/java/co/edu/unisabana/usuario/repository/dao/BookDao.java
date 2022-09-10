@@ -2,7 +2,6 @@ package co.edu.unisabana.usuario.repository.dao;
 
 import co.edu.unisabana.usuario.repository.dao.entity.BookEntity;
 import co.edu.unisabana.usuario.service.library.model.Book;
-import co.edu.unisabana.usuario.service.library.model.CategoryBook;
 import co.edu.unisabana.usuario.service.library.port.AddBookPort;
 import co.edu.unisabana.usuario.service.library.port.RegisterBookPort;
 import co.edu.unisabana.usuario.service.library.port.SearchBookPort;
@@ -40,9 +39,7 @@ public class BookDao implements SearchBookPort, RegisterBookPort, AddBookPort {
     @Override
     public List<BookEntity> getBooksByCategory(String category) {
         return listBooks.stream()
-                .filter(bookEntity -> Objects.equals(bookEntity.getCategory(), CategoryBook.HARD_COVER.name()) ||
-                        Objects.equals(bookEntity.getCategory(), CategoryBook.EBOOK.name()) ||
-                        Objects.equals(bookEntity.getCategory(), CategoryBook.SOFT_COVER.name()))
+                .filter(bookEntity -> Objects.equals(bookEntity.getCategory().toUpperCase(), category.toUpperCase()))
                 .collect(Collectors.toList());
     }
 
@@ -56,12 +53,12 @@ public class BookDao implements SearchBookPort, RegisterBookPort, AddBookPort {
     @Override
     public boolean addBook(String name) {
         for (BookEntity book : listBooks) {
-            if (book.getName().equals(name) && book.getQuantity()< MAX_QUANTITY_BOOK_ADDED) {
+            if (book.getName().equals(name) && book.getQuantity() < MAX_QUANTITY_BOOK_ADDED) {
                 book.setQuantity(book.getQuantity() + 1);
                 return true;
             }
         }
-        throw new IllegalArgumentException("No existe libre para actualizar");
+        throw new IllegalArgumentException("No existe libro para actualizar");
     }
 
 }
