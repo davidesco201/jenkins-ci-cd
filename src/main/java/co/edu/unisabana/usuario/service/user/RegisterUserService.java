@@ -31,4 +31,8 @@ public class RegisterUserService {
         }
     }
 
+    public int sumar(){
+        return 2+3;
+    }
+
 }

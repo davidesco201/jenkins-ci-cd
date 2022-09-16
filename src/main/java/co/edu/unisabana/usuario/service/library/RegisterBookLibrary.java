@@ -13,14 +13,18 @@ public class RegisterBookLibrary {
     private final AddBookPort addBookPort;
     private final RegisterBookPort registerBookPort;
 
-    public RegisterBookLibrary(SearchBookPort searchBookPort, AddBookPort addBookPort, RegisterBookPort registerBookPort) {
+    private Suma suma;
+
+    public RegisterBookLibrary(SearchBookPort searchBookPort, AddBookPort addBookPort, RegisterBookPort registerBookPort, Suma objectoInyectado) {
         this.searchBookPort = searchBookPort;
         this.addBookPort = addBookPort;
         this.registerBookPort = registerBookPort;
+        this.suma = objectoInyectado;
     }
 
 
     public int registerBook(Book book) {
+        suma.sumar();
         boolean exists = searchBookPort.validateExistsBook(book.getName());
         if (exists) {
             addBookPort.addBook(book.getName());

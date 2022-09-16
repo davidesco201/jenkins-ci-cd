@@ -1,6 +1,7 @@
 package co.edu.unisabana.usuario.repository.dao;
 
 import co.edu.unisabana.usuario.repository.dao.entity.BookEntity;
+import co.edu.unisabana.usuario.exception.PreliminaryRegisterException;
 import co.edu.unisabana.usuario.service.library.model.Book;
 import co.edu.unisabana.usuario.service.library.port.AddBookPort;
 import co.edu.unisabana.usuario.service.library.port.RegisterBookPort;
@@ -43,6 +44,8 @@ public class BookDao implements SearchBookPort, RegisterBookPort, AddBookPort {
                 return true;
             }
         }
-        throw new IllegalArgumentException("No existe libre para actualizar");
+        //Para evitar confusiones futuras, se debe crear excepciones personalizadas conforme existan reglas de negocio
+        //que las ameriten. POR FAVOR AGREGUEN CONTEXTO
+        throw new PreliminaryRegisterException(name);
     }
 }
