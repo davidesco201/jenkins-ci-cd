@@ -62,7 +62,7 @@ public class RegisterUserServiceTest {
         int result = service.registerUser(user);
 
         Mockito.verify(registerUserPort).addNewUser(user);
-        assertEquals(2, result);
+        assertEquals(10, result);
     }
 
 
@@ -81,11 +81,11 @@ public class RegisterUserServiceTest {
     public void Give_SendCorrectIinformantion_When_Registeruser_Then_returnFalse() {
         User user = new User();
         user.setName("Daniel");
+        user.setAge(18);
         Mockito.when(registerUserPort.addNewUser(user)).thenReturn(true);
         int result = service.registerUser(user);
         Mockito.verify(registerUserPort).addNewUser(user);
         // assertTrue(result);
     }
-
 
 }

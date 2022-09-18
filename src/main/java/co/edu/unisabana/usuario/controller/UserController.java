@@ -36,7 +36,7 @@ public class UserController {
     List<UserDTO> lista = new ArrayList<>();
     lista.add(new UserDTO("Richard", "a", 20));
     lista.add(new UserDTO("Jhonatan", "a", 21));
-
+    lista.add(new UserDTO("laura", "Espitia", 19));
     lista.add(new UserDTO("laura", "Piraneque", 19));
 
 
