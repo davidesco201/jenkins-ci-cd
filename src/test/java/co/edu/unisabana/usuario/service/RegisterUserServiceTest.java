@@ -32,6 +32,12 @@ public class RegisterUserServiceTest {
     }
 
     @Test
+    public void When_callSum_Then_return_5(){
+        int resultado = service.sumar();
+        assertEquals(5,resultado);
+    }
+
+    @Test
     public void Given_age_is_minior_18_When_RegisterUser_Then_RuntimeException() {
         User user = new User();
         user.setName("Daniel");
