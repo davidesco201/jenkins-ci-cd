@@ -29,9 +29,4 @@ public class BookController {
 
 
     }
-
-    @GetMapping("/search")
-    public String registerBook() {
-        return "hola";
-    }
 }

@@ -14,12 +14,6 @@ import java.util.List;
 @RestController
 public class UserController {
 
-  @GetMapping("/hello")
-  public String greeting() {
-    return "Hola Mundo";
-  }
-
-
   @GetMapping(value = "/data")
   public UserDTO dataUser() {
     return new UserDTO("d", "s", 20);

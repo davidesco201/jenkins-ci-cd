@@ -22,6 +22,17 @@ jacocoTestReport{
 		csv.required = false
 		html.outputLocation = layout.buildDirectory.dir('jacocoHtml')
 	}
+	afterEvaluate{
+		classDirectories.setFrom(files(classDirectories.files.collect{
+			fileTree(dir: it, exclude:[
+				"co/edu/unisabana/usuario/dto",
+				"co/edu/unisabana/usuario/repository/dao/entity",
+				"co/edu/unisabana/usuario/service/model",
+				"co/edu/unisabana/usuario/usuario",
+				"**/config/*"
+			])
+		}))
+	}
 }
 jacoco {
 	toolVersion = "0.8.8"

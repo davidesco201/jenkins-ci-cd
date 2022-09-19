@@ -65,6 +65,18 @@ public class RegisterUserServiceTest {
         assertEquals(10, result);
     }
 
+    @Test
+    public void Given_incorrect_data_When_RegisterUser_Then_return_3() {
+        User user = new User();
+        user.setName("David");
+        user.setAge(18);
+        Mockito.when(registerUserPort.addNewUser(user)).thenReturn(false);
+        int result = service.registerUser(user);
+
+        Mockito.verify(registerUserPort).addNewUser(user);
+        assertEquals(3, result);
+    }
+
 
     /**
      * ¿Cuantas pruebas unitarias debe tener un metodo?
