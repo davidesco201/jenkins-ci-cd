@@ -20,6 +20,7 @@ sonarqube {
 }
 
 test {
+	sonarqube
 	finalizedBy jacocoTestReport
 }
 jacocoTestReport{
