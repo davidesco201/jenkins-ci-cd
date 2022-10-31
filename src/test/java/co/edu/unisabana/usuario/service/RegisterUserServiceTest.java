@@ -23,7 +23,7 @@ public class RegisterUserServiceTest {
 
 
     @Test
-    public void Given_name_isEmpty_When_RegisterUser_Then_throwException() {
+    void Given_name_isEmpty_When_RegisterUser_Then_throwException() {
         User user = new User();
         user.setName("");
         assertThrows(IllegalArgumentException.class, () -> {
@@ -32,13 +32,13 @@ public class RegisterUserServiceTest {
     }
 
     @Test
-    public void When_callSum_Then_return_5(){
+     void When_callSum_Then_return_5(){
         int resultado = service.sumar();
         assertEquals(5,resultado);
     }
 
     @Test
-    public void Given_age_is_minior_18_When_RegisterUser_Then_RuntimeException() {
+    void Given_age_is_minior_18_When_RegisterUser_Then_RuntimeException() {
         User user = new User();
         user.setName("Daniel");
         user.setAge(17);
@@ -54,7 +54,7 @@ public class RegisterUserServiceTest {
      * Verify(Garantizar que se invoco algo, adicional, verifican que se invoco con la data correcta)
      */
     @Test
-    public void Given_data_ok_When_RegisterUser_Then_successful() {
+    void Given_data_ok_When_RegisterUser_Then_successful() {
         User user = new User();
         user.setName("Daniel");
         user.setAge(19);
@@ -66,7 +66,7 @@ public class RegisterUserServiceTest {
     }
 
     @Test
-    public void Given_incorrect_data_When_RegisterUser_Then_return_3() {
+    void Given_incorrect_data_When_RegisterUser_Then_return_3() {
         User user = new User();
         user.setName("David");
         user.setAge(18);
@@ -83,14 +83,14 @@ public class RegisterUserServiceTest {
      * Cuantas salidas /variaciones tiene su codigo
      */
     @Test
-    public void Give_dontSendCorrectIinformantion_When_Registeruser_Then_throwIllegalArgument() {
+    void Give_dontSendCorrectIinformantion_When_Registeruser_Then_throwIllegalArgument() {
         assertThrows(IllegalArgumentException.class, () -> {
             service.registerUser(new User());
         });
     }
 
     @Test
-    public void Give_SendCorrectIinformantion_When_Registeruser_Then_returnFalse() {
+    void Give_SendCorrectIinformantion_When_Registeruser_Then_returnFalse() {
         User user = new User();
         user.setName("Daniel");
         user.setAge(18);
